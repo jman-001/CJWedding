@@ -18,6 +18,12 @@ function initializeApp() {
 
     initializeButtons();
 
+    initializeForms();
+
+    updateNavigation();
+
+    updateProgress();
+
 }
 
 
@@ -27,11 +33,29 @@ function initializeApp() {
 
 function initializeButtons() {
 
-    const startButton = document.querySelector(".primary-button");
+    const startButton = document.querySelector("#welcome .primary-button");
+    const nextButton = document.querySelector(".footer .primary-button");
+    const backButton = document.querySelector(".secondary-button");
 
     if (startButton) {
 
-        startButton.addEventListener("click", startForm);
+        startButton.addEventListener("click", () => {
+
+            showPage(1);
+
+        });
+
+    }
+
+    if (nextButton) {
+
+        nextButton.addEventListener("click", nextPage);
+
+    }
+
+    if (backButton) {
+
+        backButton.addEventListener("click", previousPage);
 
     }
 
@@ -45,5 +69,13 @@ function initializeButtons() {
 function startForm() {
 
     console.log("Starting form...");
+
+}
+
+// Refresh User Interfase
+function refreshUI() {
+
+    updateNavigation();
+    updateProgress();
 
 }

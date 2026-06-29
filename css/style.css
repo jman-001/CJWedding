@@ -121,9 +121,19 @@ body {
 
 /* ---------- Pages ---------- */
 
+/* ---------- Pages ---------- */
+
 .page {
 
+    display: none;
+
     width: 100%;
+
+}
+
+.page.active {
+
+    display: block;
 
 }
 
@@ -230,3 +240,50 @@ button {
     }
 
 }
+
+/* ---------- Utility Classes ---------- */
+
+.hidden {
+
+    display: none !important;
+
+}
+
+/* ---------- Option Buttons ---------- */
+
+.option-group {
+
+    display: flex;
+
+    gap: 20px;
+
+    justify-content: center;
+
+    margin-top: 20px;
+
+}
+
+.option-button {
+
+    min-width: 140px;
+
+    padding: 14px 24px;
+
+    border: 2px solid #cccccc;
+
+    border-radius: 10px;
+
+    background: white;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+.option-button:hover {
+
+    border-color: #2b6cb0;
+
+}
+
