@@ -54,6 +54,8 @@ function showPage(step) {
 
     updateProgress();
 
+    renderCurrentStep(step);
+
 }
 
 
@@ -62,6 +64,15 @@ function showPage(step) {
 // -------------------------------
 
 function nextPage() {
+    if (currentStep === 1) {
+
+    if (!validateInvitationStep()) {
+
+        return;
+
+    }
+
+}
 
     showPage(currentStep + 1);
 
