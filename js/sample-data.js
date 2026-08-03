@@ -35,6 +35,43 @@ function createGuest(name) {
 
 }
 
+const invitation = {
+
+    code: "",
+
+    submitted: false,
+
+    submittedAt: null,
+
+    guests: [
+
+        {
+
+            id: "",
+
+            name: "",
+
+            responses: {
+
+                attendance: null,
+
+                welcomeCocktail: null,
+
+                reception: null,
+
+                meal: null,
+
+                returnBus: null,
+
+                cocktail: null
+
+            }
+
+        }
+
+    ]
+
+};
 
 // ======================================================
 // Sample Invitations

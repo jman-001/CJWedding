@@ -79,7 +79,7 @@ function createGuestList(container, guests, contentBuilder = null) {
 // Radio Group
 // ======================================================
 
-function createRadioGroup(question) {
+function createRadioGroup(guest, question) {
 
     const container = document.createElement("div");
     container.className = "radio-group";
@@ -100,7 +100,29 @@ function createRadioGroup(question) {
         label.className = "radio-option";
 
         const input = document.createElement("input");
+
         input.type = "radio";
+
+        input.name = `${guest.name}-${question.id}`;
+
+        input.value = option.value;
+
+        const savedResponse = guest.responses[question.id];
+
+        if (savedResponse === option.value) {
+
+            input.checked = true;
+
+        }
+
+
+        input.addEventListener("change", () => {
+
+            guest.responses[question.id] = option.value;
+
+            saveInvitationState();
+
+        });
 
         label.appendChild(input);
 
@@ -120,7 +142,7 @@ function createRadioGroup(question) {
 
 function createGuestQuestionCard(guest, question) {
 
-    const controls = createRadioGroup(question);
+    const controls = createRadioGroup(guest, question);
 
     return createGuestCard(guest, controls);
 

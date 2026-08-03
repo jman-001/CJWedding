@@ -11,6 +11,8 @@ const QUESTIONS = [
 
         title: "Attendance",
 
+        summaryLabel: "Asistencia",
+
         description: "Please let us know who will attend our wedding.",
 
         type: "radio",
@@ -21,12 +23,12 @@ const QUESTIONS = [
 
             {
                 value: true,
-                label: "Will attend"
+                label: "Yes, I Will attend"
             },
 
             {
                 value: false,
-                label: "Will not attend"
+                label: "No, I will not attend"
             }
 
         ]
@@ -36,9 +38,11 @@ const QUESTIONS = [
     {
         id: "welcomeCocktail",
 
-        title: "Welcome Cocktail",
+        title: "Coctel de bienvenida",
 
-        description: "Will this guest attend the Welcome Cocktail?",
+        summaryLabel: "Welcome Cocktail",
+
+        description: "Vamos a hacer un coctel de bienvenida el dia antes para todos podernos conocer un poco mas antes del gran dia.\n Queremos saber ¿quienes asistirán?",
 
         type: "radio",
 
@@ -48,13 +52,14 @@ const QUESTIONS = [
 
             {
                 value: true,
-                label: "Yes"
+                label: "Yes, I Will attend"
             },
 
             {
                 value: false,
-                label: "No"
+                label: "No, I will not attend"
             }
+
 
         ]
 
@@ -64,6 +69,8 @@ const QUESTIONS = [
         id: "reception",
 
         title: "Reception",
+
+        summaryLabel: "Recepción",
 
         description: "Will this guest attend the reception?",
 
@@ -75,12 +82,12 @@ const QUESTIONS = [
 
             {
                 value: true,
-                label: "Yes"
+                label: "Yes, I Will attend"
             },
 
             {
                 value: false,
-                label: "No"
+                label: "No, I will not attend"
             }
 
         ]
@@ -91,6 +98,8 @@ const QUESTIONS = [
         id: "meal",
 
         title: "Meal Preference",
+        
+        summaryLabel: "Menú",
 
         description: "Please choose a meal.",
 
@@ -102,17 +111,22 @@ const QUESTIONS = [
 
             {
                 value: "regular",
-                label: "Regular"
+                label: "Sin restricciones"
             },
 
             {
                 value: "vegetarian",
-                label: "Vegetarian"
+                label: "Vegetariano"
+            },
+
+            {
+                value: "vegan",
+                label: "Vegano"
             },
 
             {
                 value: "allergies",
-                label: "Food Allergy"
+                label: "Alergias"
             }
 
         ]
@@ -123,6 +137,8 @@ const QUESTIONS = [
         id: "returnBus",
 
         title: "Return Bus",
+        
+        summaryLabel: "Bus de regreso",
 
         description: "Please select your preferred return bus.",
 
@@ -133,18 +149,23 @@ const QUESTIONS = [
         options: [
 
             {
-                value: "10:30",
-                label: "10:30 PM"
+                value: "11:00",
+                label: "11:00 PM"
             },
 
             {
-                value: "11:30",
-                label: "11:30 PM"
+                value: "12:00",
+                label: "Media Noche"
+            },
+
+            {
+                value: "1:00",
+                label: "1:00 AM"
             },
 
             {
                 value: "none",
-                label: "No Bus"
+                label: "No necesito transporte"
             }
 
         ]
@@ -154,9 +175,9 @@ const QUESTIONS = [
     {
         id: "cocktail",
 
-        title: "Preferred Cocktail",
+        title: "Coctel Preferido",
 
-        description: "Choose your preferred welcome drink.",
+        description: "Estos son las bebidas que ofreceremos en el bar. De ellas, cual prefieres?",
 
         type: "radio",
 
@@ -165,23 +186,23 @@ const QUESTIONS = [
         options: [
 
             {
-                value: "mojito",
-                label: "Mojito"
+                value: "moscow_mule",
+                label: "Moscow Mule"
             },
 
             {
-                value: "gin-tonic",
-                label: "Gin & Tonic"
+                value: "cuba_libre",
+                label: "Cuba Libre"
             },
 
             {
-                value: "wine",
-                label: "Wine"
+                value: "sangria",
+                label: "Sangria"
             },
 
             {
-                value: "beer",
-                label: "Beer"
+                value: "cerveza",
+                label: "Cerveza"
             }
 
         ]

@@ -4,7 +4,6 @@
 // Handles the current invitation
 // ======================================================
 
-
 // ======================================================
 // Current Invitation
 // ======================================================
@@ -28,7 +27,17 @@ function loadInvitation(code) {
 
     }
 
+    // Intentar recuperar la sesión guardada
+    if (loadInvitationState(invitation.code)) {
+
+        return true;
+
+    }
+
+    // Si no existe memoria, crear una nueva
     currentInvitation = structuredClone(invitation);
+
+    saveInvitationState();
 
     return true;
 
@@ -99,5 +108,54 @@ function validateInvitationStep() {
     error.textContent = "";
 
     return true;
+
+}
+
+const INVITATION_STORAGE_KEY = "currentInvitation";
+
+const INVITATION_STORAGE_PREFIX = "invitation_";
+
+
+function saveInvitationState() {
+
+    if (!currentInvitation) {
+        return false;
+    }
+
+    const key = `${INVITATION_STORAGE_PREFIX}${currentInvitation.code}`;
+
+    localStorage.setItem(
+        key,
+        JSON.stringify(currentInvitation)
+    );
+
+    return true;
+
+}
+
+
+function loadInvitationState(code) {
+
+    const key = `${INVITATION_STORAGE_PREFIX}${code}`;
+
+    const storedInvitation = localStorage.getItem(key);
+
+    if (!storedInvitation) {
+
+        return false;
+
+    }
+
+    currentInvitation = JSON.parse(storedInvitation);
+
+    return true;
+
+}
+
+function clearInvitationState(code) {
+
+    const key = `${INVITATION_STORAGE_PREFIX}${code}`;
+
+    localStorage.removeItem(key);
 
 }
