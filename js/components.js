@@ -20,16 +20,26 @@ function clearContainer(container) {
 // Guest Card
 // ======================================================
 
-function createGuestCard(guest) {
+function createGuestCard(guest, content = null) {
 
     const card = document.createElement("div");
     card.className = "guest-card";
 
-    const name = document.createElement("p");
-    name.className = "guest-name";
-    name.textContent = guest.name;
+    // Guest Name
 
-    card.appendChild(name);
+    const guestName = document.createElement("h3");
+    guestName.className = "guest-name";
+    guestName.textContent = guest.name;
+
+    card.appendChild(guestName);
+
+    // Dynamic Content
+
+    if (content) {
+
+        card.appendChild(content);
+
+    }
 
     return card;
 
@@ -62,5 +72,56 @@ function createGuestList(container, guests, contentBuilder = null) {
         container.appendChild(card);
 
     });
+
+}
+
+// ======================================================
+// Radio Group
+// ======================================================
+
+function createRadioGroup(question) {
+
+    const container = document.createElement("div");
+    container.className = "radio-group";
+
+    // Instruction
+
+    const instruction = document.createElement("p");
+    instruction.className = "guest-instruction";
+    instruction.textContent = question.instruction;
+
+    container.appendChild(instruction);
+
+    // Options
+
+    question.options.forEach(option => {
+
+        const label = document.createElement("label");
+        label.className = "radio-option";
+
+        const input = document.createElement("input");
+        input.type = "radio";
+
+        label.appendChild(input);
+
+        label.append(" " + option.label);
+
+        container.appendChild(label);
+
+    });
+
+    return container;
+
+}
+
+// ======================================================
+// Guest Question Card
+// ======================================================
+
+function createGuestQuestionCard(guest, question) {
+
+    const controls = createRadioGroup(question);
+
+    return createGuestCard(guest, controls);
 
 }
