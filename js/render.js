@@ -37,9 +37,9 @@ function renderInvitationConfirmation() {
 // ======================================================
 
 function renderCurrentStep(step) {
-
+    console.log("renderCurrentStep:", step);
     switch (step) {
-
+        
         // Invitation Confirmation
 
         case 2:
@@ -170,18 +170,17 @@ function renderSummary() {
 
                 row.appendChild(label);
                 row.appendChild(value);
+                content.appendChild(row);
 
-content.appendChild(row);
+                            });
 
-            });
-
-        }
+                        }
 
 
-        const card = createGuestCard(guest, content);
+                const card = createGuestCard(guest, content);
 
-        container.appendChild(card);
+                container.appendChild(card);
 
-    });
+                    });
 
 }

@@ -28,7 +28,7 @@ function getPages() {
 // -------------------------------
 
 function showPage(step) {
-
+    console.log("showPage:", step);
     const pages = getPages();
 
     // Safety check
@@ -63,16 +63,41 @@ function showPage(step) {
 // Next Page
 // -------------------------------
 
-function nextPage() {
+async function nextPage() {
+
     if (currentStep === 1) {
 
-    if (!validateInvitationStep()) {
+        const result = await handleInvitationCheck();
+
+        if (!result.ok) {
+
+            return;
+
+        }   
+
+    }
+    console.log("At least one Guest?", areAnyGuestsAttending());
+
+
+    if (currentStep === 3 && !areAnyGuestsAttending()) {
+        showPage(9);
 
         return;
 
-    }
+    } 
 
-}
+    // Review step: confirmar y enviar a Google Sheets antes de avanzar
+    if (currentStep === 9) {
+
+        const result = await handleSubmission();
+
+        if (!result.ok) {
+
+            return;
+
+        }
+
+    }
 
     showPage(currentStep + 1);
 
@@ -143,5 +168,16 @@ function updateProgress() {
     progressFill.style.width = `${percentage}%`;
 
     progressText.textContent = `Step ${currentStep + 1} of ${pages.length}`;
+
+}
+
+
+function areAnyGuestsAttending() {
+
+    console.log(currentInvitation.guests);
+
+    return currentInvitation.guests.some(
+        guest => guest.responses.attendance === true
+    );
 
 }

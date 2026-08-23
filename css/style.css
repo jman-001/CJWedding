@@ -208,6 +208,14 @@ button {
 
 }
 
+.primary-button:disabled {
+
+    opacity: .6;
+
+    cursor: not-allowed;
+
+}
+
 .secondary-button {
 
     background: #dddddd;

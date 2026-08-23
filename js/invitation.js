@@ -15,31 +15,64 @@ let currentInvitation = null;
 // Load Invitation
 // ======================================================
 
-function loadInvitation(code) {
+async function loadInvitation(rawCode) {
 
-    const invitation = INVITATIONS.find(
-        invitation => invitation.code.toUpperCase() === code.toUpperCase()
-    );
+    const code = rawCode.trim().toUpperCase();
 
-    if (!invitation) {
+    // Intentar recuperar la sesión guardada primero
+    if (loadInvitationState(code)) {
 
-        return false;
-
-    }
-
-    // Intentar recuperar la sesión guardada
-    if (loadInvitationState(invitation.code)) {
-
-        return true;
+        return { ok: true };
 
     }
 
-    // Si no existe memoria, crear una nueva
-    currentInvitation = structuredClone(invitation);
+    // Si no existe memoria, consultar el Sheet
+    let result;
+
+    try {
+
+        result = await fetchInvitationFromSheet(code);
+
+    } catch (error) {
+
+        console.error("fetchInvitationFromSheet failed:", error);
+
+        return {
+            ok: false,
+            error: "No se pudo verificar tu código. Revisa tu conexión e inténtalo de nuevo."
+        };
+
+    }
+
+    if (!result.found) {
+
+        return { ok: false, error: "Código de invitación no encontrado." };
+
+    }
+
+    currentInvitation = {
+
+        code: code,
+
+        submitted: false,
+
+        submittedAt: null,
+
+        guests: result.guests.map(guest => {
+
+            const built = createGuest(guest.name);
+
+            Object.assign(built.responses, guest.responses);
+
+            return built;
+
+        })
+
+    };
 
     saveInvitationState();
 
-    return true;
+    return { ok: true };
 
 }
 
@@ -82,32 +115,50 @@ function clearCurrentInvitation() {
 
 }
 
-function validateInvitationStep() {
+async function handleInvitationCheck() {
 
     const input = document.getElementById("invitation-code-input");
     const error = document.getElementById("invitation-code-error");
+    const nextButton = document.querySelector(".footer .primary-button");
 
     const code = input.value.trim();
 
     if (code === "") {
 
-        error.textContent = "Please enter your invitation code.";
+        error.textContent = "Por favor ingresa tu código de invitación.";
 
-        return false;
-
-    }
-
-    if (!loadInvitation(code)) {
-
-        error.textContent = "Invitation code not found.";
-
-        return false;
+        return { ok: false };
 
     }
 
     error.textContent = "";
 
-    return true;
+    if (nextButton) {
+
+        nextButton.disabled = true;
+        nextButton.textContent = "Verificando...";
+
+    }
+
+    const result = await loadInvitation(code);
+
+    if (nextButton) {
+
+        nextButton.disabled = false;
+
+        updateNavigation();
+
+    }
+
+    if (!result.ok) {
+
+        error.textContent = result.error;
+
+        return { ok: false };
+
+    }
+
+    return { ok: true };
 
 }
 
