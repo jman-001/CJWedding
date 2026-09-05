@@ -1,301 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>RSVP</title>
+  <title>¡Un momento! 💍</title>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f7f3ec;
+      color: #3d3933;
+      font-family: Georgia, "Times New Roman", serif;
+      text-align: center;
+    }
+
+    .container {
+      width: min(90%, 650px);
+      padding: 60px 30px;
+    }
+
+    .ornament {
+      font-size: 28px;
+      letter-spacing: 8px;
+      margin-bottom: 35px;
+      opacity: 0.75;
+    }
+
+    h1 {
+      margin: 0 0 25px;
+      font-size: clamp(34px, 7vw, 58px);
+      font-weight: normal;
+      line-height: 1.15;
+    }
+
+    .message {
+      font-size: clamp(18px, 3vw, 22px);
+      line-height: 1.7;
+      margin: 0 auto 35px;
+      max-width: 520px;
+    }
+
+    .date {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 15px 30px;
+      border-top: 1px solid #aaa39a;
+      border-bottom: 1px solid #aaa39a;
+      font-size: 18px;
+      letter-spacing: 3px;
+    }
+
+    .small {
+      margin-top: 35px;
+      font-size: 15px;
+      font-style: italic;
+      opacity: 0.75;
+    }
+  </style>
 </head>
 
 <body>
 
-    <div class="app-container">
-        <!-- ================= HEADER ================= -->
+  <main class="container">
 
-        <header class="header">
+    <div class="ornament">✦ · ✦</div>
 
-            <div class="logo-container">
-                <!-- Reemplazar posteriormente por el logo -->
-                <h2>Wedding Logo</h2>
-            </div>
+    <h1>¡Sabemos que estás emocionado!</h1>
 
-            <div class="progress-section">
+    <p class="message">
+      Pero espera un poquito…<br>
+      <strong>todavía no todos han recibido su invitación.</strong>
+    </p>
 
-                <div class="progress-bar">
+    <p class="message">
+      Estamos preparando todo para celebrar este día tan especial
+      contigo.
+    </p>
 
-                    <div class="progress-fill" style="width: 12.5%;"></div>
-
-                </div>
-
-                <span class="progress-text">
-                    Step 1 of 8
-                </span>
-
-            </div>
-
-        </header>
-
-        <!-- ================= MAIN ================= -->
-
-        <main class="main-content">
-
-
-        <!-- ================= WELCOME ================= -->
-
-        <section id="welcome" class="page active">
-
-            <div class="page-content">
-
-                <h1>Welcome</h1>
-
-                <p>
-                    Welcome Screen
-                </p>
-
-                <button class="primary-button">
-                    Start
-                </button>
-
-            </div>
-
-        </section>
-
-        <!-- ================= INVITATION CODE ================= -->
-
-        <section id="invitation-code" class="page">
-
-            <div class="page-content">
-
-                <h1>Codigo de invitacion</h1>
-
-                <p>
-                    Porfavor, ¡ingresa el codigo de la invitación que recibiste!
-                </p>
-
-                <div class="input-group">
-
-                    <input
-                        type="text"
-                        id="invitation-code-input"
-                        class="text-input"
-                        placeholder="e.g. AB12CD"
-                        maxlength="10"
-                        spellcheck="false"
-                        autocomplete="off"
-                        autocapitalize="characters"
-                    />
-
-                </div>
-                <div id="invitation-code-error" class="error-message"></div>
-
-            </div>
-
-        </section>
-
-        <section id="invitation-confirmation" class="page">
-
-            <div class="page-content">
-
-                <h1>Invitation Confirmation</h1>
-
-                <p>
-                    Please verify that these guests belong to your invitation.
-                </p>
-
-                <div id="confirmation-guest-list">
-
-                    <!-- Generated automatically -->
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- ================= ATTENDANCE ================= -->
-
-        <section id="attendance" class="page">
-
-            <div class="page-content">
-
-                <h1>Attendance</h1>
-
-                <p>
-                    Please let us know who will attend our wedding celebration.
-                </p>
-
-                <div id="attendance-content"></div>
-
-                
-
-            </div>
-
-        </section>
-
-        <section id="welcome-cocktail" class="page">
-
-            <div class="page-content">
-
-                <h1>Welcome Cocktail</h1>
-
-                <p>
-                    Please let us know who will attend the Welcome Cocktail.
-                </p>
-
-                <div id="welcomeCocktail-content"></div>
-
-            </div>
-
-        </section>
-
-        <!-- ================= RECEPTION ================= -->
-
-        <section id="reception" class="page">
-
-            <div class="page-content">
-
-                <h1>Reception</h1>
-
-                <p>
-                    Please let us know who will attend the wedding reception.
-                </p>
-
-                <div id="reception-content"></div>
-
-            </div>
-
-        </section>
-
-        <!-- ================= MEAL PREFERENCE ================= -->
-
-        <section id="meal" class="page">
-
-            <div class="page-content">
-
-                <h1>Meal Preference</h1>
-
-                <p>
-                    Please choose a meal preference for each guest.
-                </p>
-
-                <div id="meal-content"></div>
-
-            </div>
-
-        </section>
-
-        <!-- ================= RETURN BUS ================= -->
-
-        <section id="return-bus" class="page">
-
-            <div class="page-content">
-
-                <h1>Return Bus</h1>
-
-                <p>
-                    Please select the preferred return transportation.
-                </p>
-
-                <div id="returnBus-content"></div>
-
-            </div>
-
-        </section>
-
-        <!-- ================= PREFERRED COCKTAIL ================= -->
-
-        <section id="cocktail" class="page">
-
-            <div class="page-content">
-
-                <h1>Preferred Cocktail</h1>
-
-                <p>
-                    Please select a preferred cocktail for each guest.
-                </p>
-
-                <div id="cocktail-content"></div>
-
-            </div>
-
-        </section>
-
-        <!-- ================= REVIEW ================= -->
-
-        <section id="review" class="page">
-
-            <div class="page-content">
-
-                <h1>Review Your Responses</h1>
-
-                <p>
-                    Please review all your answers before submitting your RSVP.
-                </p>
-
-                <div id="summary-content"></div>
-
-                <div id="submission-status" class="error-message"></div>
-
-            </div>
-
-        </section>
-
-        <!-- ================= THANK YOU ================= -->
-
-        <section id="thank-you" class="page">
-
-            <div class="page-content">
-
-                <h1>Thank You</h1>
-
-                <p>
-                    Placeholder
-                </p>
-
-            </div>
-
-        </section>
-
-    </main>
-
-        
-
-        </main>
-
-        <!-- ================= FOOTER ================= -->
-
-        <footer class="footer">
-
-            <button class="secondary-button" disabled>
-
-                ← Back
-
-            </button>
-
-            <button class="primary-button">
-
-                Next →
-
-            </button>
-
-        </footer>
-
+    <div class="date">
+      1 · 10 · 2026
     </div>
 
-    <!-- Scripts -->
-    <script src="js/navigation.js"></script>
-    <script src="js/guest-factory.js"></script>
-    <script src="js/question-config.js"></script>
-    <script src="js/invitation.js"></script>
-    <script src="js/sheets-integration.js"></script>
-    <script src="js/components.js"></script>
-    <script src="js/render.js"></script>
-    <script src="js/forms.js"></script>
-    <script src="js/app.js"></script>
-</body>
+    <p class="small">
+      A partir del 1 de octubre podrás entrar y confirmar tu asistencia.
+      <br><br>
+      Nos vemos pronto. ♥
+    </p>
 
+  </main>
+
+</body>
 </html>
+
