@@ -1,0 +1,789 @@
+/* =======================================================
+   Wedding RSVP — Caro & Jose
+   style.css
+   Refresco visual (solo CSS) — estética de tarjetería fina
+======================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@400;500;600&display=swap');
+
+:root {
+
+    --color-paper: #F1F3EC;
+    --color-paper-alt: #FFFFFF;
+    --color-ink: #262B26;
+    --color-muted: #6E7268;
+    --color-primary: #3F5541;
+    --color-primary-dark: #2C3B2E;
+    --color-accent: #7C2D3B;
+    --color-gold: #B79A63;
+    --color-border: #DAD7C8;
+    --color-error: #A23B34;
+
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'Work Sans', Arial, Helvetica, sans-serif;
+
+    --radius-sm: 8px;
+    --radius-md: 14px;
+
+    --shadow-soft: 0 10px 28px rgba(38, 43, 38, .08);
+
+}
+
+/* ---------- Reset ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+
+    overflow-x: hidden;
+
+}
+
+/* ---------- Body ---------- */
+
+body {
+
+    font-family: var(--font-body);
+
+    background: radial-gradient(circle at top, #F8F8F2 0%, var(--color-paper) 65%);
+
+    color: var(--color-ink);
+
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    overflow-x: hidden;
+
+}
+
+/* ---------- Main Container ---------- */
+
+.app-container {
+
+    width: 100%;
+    max-width: 640px;
+
+    margin: auto;
+
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 48px 32px calc(24px + env(safe-area-inset-bottom, 0px));
+
+}
+
+/* ---------- Header ---------- */
+
+.header {
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 24px;
+
+    margin-bottom: 48px;
+
+}
+
+.logo-container {
+
+    text-align: center;
+    position: relative;
+
+    padding-bottom: 20px;
+
+}
+
+.logo-container::after {
+
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 48px;
+    height: 2px;
+
+    background: var(--color-gold);
+
+}
+
+.logo-container h2 {
+
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.9rem;
+    letter-spacing: .01em;
+    color: var(--color-primary-dark);
+
+}
+
+.progress-section {
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+.progress-bar {
+
+    position: relative;
+
+    width: 100%;
+    height: 6px;
+
+    background: var(--color-border);
+
+    border-radius: 999px;
+
+    overflow: hidden;
+
+}
+
+.progress-bar::after {
+
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    /* 11 pasos reales (ver secciones .page en index.html) */
+    background-image: repeating-linear-gradient(
+        to right,
+        var(--color-paper) 0,
+        var(--color-paper) 2px,
+        transparent 2px,
+        transparent calc(100% / 11)
+    );
+
+    pointer-events: none;
+
+}
+
+.progress-fill {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: linear-gradient(90deg, var(--color-gold), var(--color-accent));
+
+    transition: width 0.4s ease;
+
+}
+
+.progress-text {
+
+    text-align: center;
+
+    font-size: 0.8rem;
+    letter-spacing: .02em;
+    color: var(--color-muted);
+
+}
+
+/* ---------- Main ---------- */
+
+.main-content {
+
+    flex: 1;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding-bottom: 8px;
+
+}
+
+
+/* ---------- Pages ---------- */
+
+.page {
+
+    display: none;
+
+    width: 100%;
+
+}
+
+.page.active {
+
+    display: block;
+
+    animation: page-enter .45s ease both;
+
+}
+
+@keyframes page-enter {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+#welcome h1 {
+
+    font-size: 2.6rem;
+
+}
+
+@media (max-width: 768px) {
+
+    #welcome h1 {
+
+        font-size: 2.1rem;
+
+    }
+
+}
+
+.page-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 22px;
+
+    text-align: center;
+
+}
+
+/* ---------- Typography ---------- */
+
+h1 {
+
+    font-family: var(--font-display);
+    font-weight: 500;
+    color: var(--color-primary-dark);
+
+    font-size: 2.1rem;
+
+}
+
+p {
+
+    line-height: 1.7;
+    color: var(--color-muted);
+    max-width: 46ch;
+
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+
+    margin-top: 48px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 16px;
+
+}
+
+/* ---------- Buttons ---------- */
+
+button {
+
+    cursor: pointer;
+
+    border: none;
+
+    border-radius: var(--radius-sm);
+
+    padding: 13px 28px;
+
+    min-height: 48px;
+
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+
+    touch-action: manipulation;
+
+    transition: background-color 0.2s ease, transform 0.15s ease, opacity 0.15s ease;
+
+}
+
+.primary-button {
+
+    background: var(--color-primary);
+
+    color: var(--color-paper-alt);
+
+    box-shadow: var(--shadow-soft);
+
+}
+
+.primary-button:hover {
+
+    background: var(--color-primary-dark);
+
+}
+
+.primary-button:active {
+
+    transform: translateY(1px);
+
+}
+
+.primary-button:disabled {
+
+    opacity: .55;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+
+}
+
+.secondary-button {
+
+    background: transparent;
+
+    color: var(--color-muted);
+
+    border: 1px solid var(--color-border);
+
+}
+
+.secondary-button:hover {
+
+    border-color: var(--color-primary);
+    color: var(--color-primary-dark);
+
+}
+
+.secondary-button:disabled {
+
+    opacity: .45;
+
+    cursor: not-allowed;
+
+}
+
+button:focus-visible {
+
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 768px) {
+
+    .app-container {
+
+        padding: 28px 20px calc(96px + env(safe-area-inset-bottom, 0px));
+
+    }
+
+    h1 {
+
+        font-size: 1.6rem;
+
+    }
+
+    .header {
+
+        gap: 16px;
+        margin-bottom: 32px;
+
+    }
+
+    .logo-container h2 {
+
+        font-size: 1.5rem;
+
+    }
+
+    .page-content {
+
+        gap: 18px;
+
+    }
+
+    /* Tarjetas de opciones a una sola columna: más fáciles de leer y
+       tocar con el pulgar que una grilla apretada de dos columnas */
+    .radio-group {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .guest-card {
+
+        padding: 18px;
+
+    }
+
+    /* Pie fijo: los botones Back/Next siempre están a mano,
+       sin tener que desplazarse hasta el final de la página */
+    .footer {
+
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        margin-top: 0;
+
+        padding: 14px 20px calc(14px + env(safe-area-inset-bottom, 0px));
+
+        background: rgba(248, 248, 242, .92);
+        backdrop-filter: blur(6px);
+
+        border-top: 1px solid var(--color-border);
+
+        z-index: 10;
+
+    }
+
+    .footer.hidden {
+
+        display: none;
+
+    }
+
+}
+
+@media (max-width: 380px) {
+
+    .app-container {
+
+        padding-left: 16px;
+        padding-right: 16px;
+
+    }
+
+    h1 {
+
+        font-size: 1.4rem;
+
+    }
+
+    .primary-button,
+    .secondary-button {
+
+        padding: 13px 20px;
+
+    }
+
+}
+
+/* ---------- Utility Classes ---------- */
+
+.hidden {
+
+    display: none !important;
+
+}
+
+/* ---------- Option Buttons ---------- */
+
+.option-group {
+
+    display: flex;
+
+    gap: 16px;
+
+    justify-content: center;
+
+    margin-top: 16px;
+
+    flex-wrap: wrap;
+
+}
+
+/* ---------- Text Inputs ---------- */
+
+.input-group {
+
+    width: 100%;
+
+    max-width: 380px;
+
+}
+
+.text-input {
+
+    width: 100%;
+
+    padding: 16px;
+
+    font-size: 1.15rem;
+
+    text-align: center;
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-sm);
+
+    outline: none;
+
+    background: var(--color-paper-alt);
+
+    transition: border-color .2s ease, box-shadow .2s ease;
+
+    letter-spacing: .25rem;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    color: var(--color-ink);
+
+}
+
+.text-input:focus {
+
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(63, 85, 65, .14);
+
+}
+
+/* ---------- Error Messages ---------- */
+
+.error-message {
+
+    min-height: 20px;
+
+    margin-top: 8px;
+
+    color: var(--color-error);
+
+    font-size: 0.9rem;
+
+    text-align: center;
+
+}
+
+/* ======================================================
+   Guest Card
+====================================================== */
+
+.guest-card {
+
+    width: 100%;
+    max-width: 560px;
+
+    padding: 24px;
+
+    margin: 14px auto;
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-md);
+
+    background-color: var(--color-paper-alt);
+
+    box-shadow: var(--shadow-soft);
+
+    box-sizing: border-box;
+
+}
+
+.guest-name {
+
+    margin: 0 0 4px;
+
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.25rem;
+
+    text-align: center;
+
+    color: var(--color-primary-dark);
+
+}
+/* ======================================================
+   Radio Cards
+====================================================== */
+
+.radio-group {
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+
+    margin-top: 16px;
+
+}
+
+.guest-instruction {
+
+    grid-column: 1 / -1;
+
+    margin-bottom: 4px;
+
+    text-align: center;
+
+    font-size: .9rem;
+
+    color: var(--color-muted);
+
+}
+
+.radio-option {
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 56px;
+
+    padding: 14px 18px;
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-md);
+
+    background: var(--color-paper-alt);
+    color: var(--color-ink);
+    font-weight: 500;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 8px rgba(38, 43, 38, .05);
+
+    transition: border-color .2s ease, background-color .2s ease, color .2s ease, box-shadow .2s ease;
+
+}
+
+.radio-option input[type="radio"] {
+
+    position: absolute;
+    inset: 0;
+
+    margin: 0;
+
+    opacity: 0;
+
+    cursor: pointer;
+
+}
+
+.radio-option:hover {
+
+    border-color: var(--color-gold);
+
+}
+
+.radio-option:has(input:checked) {
+
+    background: var(--color-primary);
+    color: var(--color-paper-alt);
+    border-color: var(--color-primary);
+
+    box-shadow: var(--shadow-soft);
+
+}
+
+.radio-option:has(input:focus-visible) {
+
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+
+}
+
+/* =========================================
+   Summary
+========================================= */
+.summary-card {
+
+    max-width: 500px;
+    width: 100%;
+
+}
+.summary-content {
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+
+}
+
+.summary-row {
+
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+
+    padding: 0.5rem 0;
+
+    border-bottom: 1px solid var(--color-border);
+
+}
+
+.summary-row:last-child {
+
+    border-bottom: none;
+
+}
+
+.summary-label {
+    text-align: left;
+    font-weight: 600;
+    font-size: .92rem;
+    color: var(--color-muted);
+
+}
+
+.summary-value {
+
+    text-align: left;
+    font-weight: 500;
+    color: var(--color-ink);
+
+}
+
+.summary-attendance {
+
+    text-align: center;
+    font-weight: 600;
+    color: var(--color-accent);
+
+}
+
+/* ---------- Accessibility ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    * {
+
+        transition: none !important;
+        animation: none !important;
+
+    }
+
+}
