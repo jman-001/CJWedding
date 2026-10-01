@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>RSVP</title>
+    <title>Confirma tu asistencia | Caro y Jose</title>
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
@@ -19,20 +19,19 @@
         <header class="header">
 
             <div class="logo-container">
-                <!-- Reemplazar posteriormente por el logo -->
-                <h2>Wedding Logo</h2>
+                <h2>Caro &amp; Jose</h2>
             </div>
 
             <div class="progress-section">
 
                 <div class="progress-bar">
 
-                    <div class="progress-fill" style="width: 12.5%;"></div>
+                    <div class="progress-fill" style="width: 9.09%;"></div>
 
                 </div>
 
                 <span class="progress-text">
-                    Step 1 of 8
+                    Paso 1 de 11
                 </span>
 
             </div>
@@ -50,14 +49,14 @@
 
             <div class="page-content">
 
-                <h1>Welcome</h1>
+                <h1>¡Qué alegría tenerte aquí!</h1>
 
                 <p>
-                    Welcome Screen
+                    Estamos preparando un día muy especial y nos encantaría compartirlo contigo. En unos pocos pasos podrás confirmar quiénes nos acompañarán y contarnos sus preferencias.
                 </p>
 
                 <button class="primary-button">
-                    Start
+                    Comenzar
                 </button>
 
             </div>
@@ -70,10 +69,10 @@
 
             <div class="page-content">
 
-                <h1>Codigo de invitacion</h1>
+                <h1>Tu código de invitación</h1>
 
                 <p>
-                    Porfavor, ¡ingresa el codigo de la invitación que recibiste!
+                    Escribe el código que aparece en tu invitación para encontrar a las personas incluidas. Así podremos guardar las respuestas de todos en un solo lugar.
                 </p>
 
                 <div class="input-group">
@@ -82,7 +81,8 @@
                         type="text"
                         id="invitation-code-input"
                         class="text-input"
-                        placeholder="e.g. AB12CD"
+                        placeholder="Ej. AB12CD"
+                        aria-label="Código de invitación"
                         maxlength="10"
                         spellcheck="false"
                         autocomplete="off"
@@ -100,10 +100,10 @@
 
             <div class="page-content">
 
-                <h1>Invitation Confirmation</h1>
+                <h1>¿Estamos todos?</h1>
 
                 <p>
-                    Please verify that these guests belong to your invitation.
+                    Estas son las personas que encontramos con tu código. Revisa sus nombres antes de continuar; en los siguientes pasos podrás responder por cada una.
                 </p>
 
                 <div id="confirmation-guest-list">
@@ -122,10 +122,10 @@
 
             <div class="page-content">
 
-                <h1>Attendance</h1>
+                <h1>¿Nos acompañarán?</h1>
 
                 <p>
-                    Please let us know who will attend our wedding celebration.
+                    Queremos saber con quiénes tendremos la alegría de celebrar. Confirma la asistencia de cada persona de tu invitación.
                 </p>
 
                 <div id="attendance-content"></div>
@@ -140,10 +140,10 @@
 
             <div class="page-content">
 
-                <h1>Welcome Cocktail</h1>
+                <h1>Un brindis para empezar</h1>
 
                 <p>
-                    Please let us know who will attend the Welcome Cocktail.
+                    El día anterior a la boda tendremos un cóctel de bienvenida para encontrarnos y conocernos un poco más. Cuéntanos quiénes podrán acompañarnos.
                 </p>
 
                 <div id="welcomeCocktail-content"></div>
@@ -158,10 +158,10 @@
 
             <div class="page-content">
 
-                <h1>Reception</h1>
+                <h1>La celebración</h1>
 
                 <p>
-                    Please let us know who will attend the wedding reception.
+                    Después llegará el momento de celebrar juntos. Indícanos quiénes asistirán a la recepción de la boda.
                 </p>
 
                 <div id="reception-content"></div>
@@ -176,10 +176,10 @@
 
             <div class="page-content">
 
-                <h1>Meal Preference</h1>
+                <h1>Algo rico para cada quien</h1>
 
                 <p>
-                    Please choose a meal preference for each guest.
+                    Queremos que todos disfruten la comida. Elige la opción de menú que mejor se ajuste a cada persona; si tiene alergias, marca esa opción.
                 </p>
 
                 <div id="meal-content"></div>
@@ -194,10 +194,10 @@
 
             <div class="page-content">
 
-                <h1>Return Bus</h1>
+                <h1>El regreso a casa</h1>
 
                 <p>
-                    Please select the preferred return transportation.
+                    Habrá transporte de regreso en distintos horarios. Elige el que prefiera cada persona o indícanos si no lo necesita. Si alguien necesita salir antes, tendremos carros particulares que podrán llevarlo de vuelta. Por ahora, los horarios son tentativos; más adelante confirmaremos los definitivos según las preferencias de todos.
                 </p>
 
                 <div id="returnBus-content"></div>
@@ -212,10 +212,10 @@
 
             <div class="page-content">
 
-                <h1>Preferred Cocktail</h1>
+                <h1>¿Con qué brindamos?</h1>
 
                 <p>
-                    Please select a preferred cocktail for each guest.
+                    Nos hace ilusión preparar el bar pensando en ustedes. Cuéntanos cuál de estas bebidas prefiere cada persona.
                 </p>
 
                 <div id="cocktail-content"></div>
@@ -230,10 +230,10 @@
 
             <div class="page-content">
 
-                <h1 id="review-title">Review Your Responses</h1>
+                <h1 id="review-title">Un último vistazo</h1>
 
                 <p id="review-description">
-                    Please review all your answers before submitting your RSVP.
+                    Revisa las respuestas de cada persona. Si quieres cambiar algo, puedes volver a los pasos anteriores antes de enviarlas.
                 </p>
 
                 <div id="summary-content"></div>
@@ -250,19 +250,15 @@
 
             <div class="page-content">
 
-                <h1>Thank You</h1>
+                <h1 id="thank-you-title">¡Gracias por confirmar!</h1>
 
-                <p>
-                    Placeholder
+                <p id="thank-you-description">
+                    Recibimos tus respuestas. Nos emociona mucho compartir este día contigo.
                 </p>
 
             </div>
 
         </section>
-
-    </main>
-
-        
 
         </main>
 
@@ -272,13 +268,13 @@
 
             <button class="secondary-button" disabled>
 
-                ← Back
+                ← Volver
 
             </button>
 
             <button class="primary-button">
 
-                Next →
+                Continuar →
 
             </button>
 

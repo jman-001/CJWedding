@@ -1,103 +1,297 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>¡Un momento! 💍</title>
+    <title>Confirma tu asistencia | Caro y Jose</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #f7f3ec;
-      color: #3d3933;
-      font-family: Georgia, "Times New Roman", serif;
-      text-align: center;
-    }
-
-    .container {
-      width: min(90%, 650px);
-      padding: 60px 30px;
-    }
-
-    .ornament {
-      font-size: 28px;
-      letter-spacing: 8px;
-      margin-bottom: 35px;
-      opacity: 0.75;
-    }
-
-    h1 {
-      margin: 0 0 25px;
-      font-size: clamp(34px, 7vw, 58px);
-      font-weight: normal;
-      line-height: 1.15;
-    }
-
-    .message {
-      font-size: clamp(18px, 3vw, 22px);
-      line-height: 1.7;
-      margin: 0 auto 35px;
-      max-width: 520px;
-    }
-
-    .date {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 15px 30px;
-      border-top: 1px solid #aaa39a;
-      border-bottom: 1px solid #aaa39a;
-      font-size: 18px;
-      letter-spacing: 3px;
-    }
-
-    .small {
-      margin-top: 35px;
-      font-size: 15px;
-      font-style: italic;
-      opacity: 0.75;
-    }
-  </style>
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-  <main class="container">
+    <div class="app-container">
+        <!-- ================= HEADER ================= -->
 
-    <div class="ornament">✦ · ✦</div>
+        <header class="header">
 
-    <h1>¡Sabemos que estás emocionado!</h1>
+            <div class="logo-container">
+                <h2>Caro &amp; Jose</h2>
+            </div>
 
-    <p class="message">
-      Pero espera un poquito…<br>
-      <strong>todavía no todos han recibido su invitación.</strong>
-    </p>
+            <div class="progress-section">
 
-    <p class="message">
-      Estamos preparando todo para celebrar este día tan especial
-      contigo.
-    </p>
+                <div class="progress-bar">
 
-    <div class="date">
-      1 · 10 · 2026
+                    <div class="progress-fill" style="width: 9.09%;"></div>
+
+                </div>
+
+                <span class="progress-text">
+                    Paso 1 de 11
+                </span>
+
+            </div>
+
+        </header>
+
+        <!-- ================= MAIN ================= -->
+
+        <main class="main-content">
+
+
+        <!-- ================= WELCOME ================= -->
+
+        <section id="welcome" class="page active">
+
+            <div class="page-content">
+
+                <h1>¡Qué alegría tenerte aquí!</h1>
+
+                <p>
+                    Estamos preparando un día muy especial y nos encantaría compartirlo contigo. En unos pocos pasos podrás confirmar quiénes nos acompañarán y contarnos sus preferencias.
+                </p>
+
+                <button class="primary-button">
+                    Comenzar
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- ================= INVITATION CODE ================= -->
+
+        <section id="invitation-code" class="page">
+
+            <div class="page-content">
+
+                <h1>Tu código de invitación</h1>
+
+                <p>
+                    Escribe el código que aparece en tu invitación para encontrar a las personas incluidas. Así podremos guardar las respuestas de todos en un solo lugar.
+                </p>
+
+                <div class="input-group">
+
+                    <input
+                        type="text"
+                        id="invitation-code-input"
+                        class="text-input"
+                        placeholder="Ej. AB12CD"
+                        aria-label="Código de invitación"
+                        maxlength="10"
+                        spellcheck="false"
+                        autocomplete="off"
+                        autocapitalize="characters"
+                    />
+
+                </div>
+                <div id="invitation-code-error" class="error-message"></div>
+
+            </div>
+
+        </section>
+
+        <section id="invitation-confirmation" class="page">
+
+            <div class="page-content">
+
+                <h1>¿Estamos todos?</h1>
+
+                <p>
+                    Estas son las personas que encontramos con tu código. Revisa sus nombres antes de continuar; en los siguientes pasos podrás responder por cada una.
+                </p>
+
+                <div id="confirmation-guest-list">
+
+                    <!-- Generated automatically -->
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ================= ATTENDANCE ================= -->
+
+        <section id="attendance" class="page">
+
+            <div class="page-content">
+
+                <h1>¿Nos acompañarán?</h1>
+
+                <p>
+                    Queremos saber con quiénes tendremos la alegría de celebrar. Confirma la asistencia de cada persona de tu invitación.
+                </p>
+
+                <div id="attendance-content"></div>
+
+                
+
+            </div>
+
+        </section>
+
+        <section id="welcome-cocktail" class="page">
+
+            <div class="page-content">
+
+                <h1>Un brindis para empezar</h1>
+
+                <p>
+                    El día anterior a la boda tendremos un cóctel de bienvenida para encontrarnos y conocernos un poco más. Cuéntanos quiénes podrán acompañarnos.
+                </p>
+
+                <div id="welcomeCocktail-content"></div>
+
+            </div>
+
+        </section>
+
+        <!-- ================= RECEPTION ================= -->
+
+        <section id="reception" class="page">
+
+            <div class="page-content">
+
+                <h1>La celebración</h1>
+
+                <p>
+                    Después llegará el momento de celebrar juntos. Indícanos quiénes asistirán a la recepción de la boda.
+                </p>
+
+                <div id="reception-content"></div>
+
+            </div>
+
+        </section>
+
+        <!-- ================= MEAL PREFERENCE ================= -->
+
+        <section id="meal" class="page">
+
+            <div class="page-content">
+
+                <h1>Algo rico para cada quien</h1>
+
+                <p>
+                    Queremos que todos disfruten la comida. Elige la opción de menú que mejor se ajuste a cada persona; si tiene alergias, marca esa opción.
+                </p>
+
+                <div id="meal-content"></div>
+
+            </div>
+
+        </section>
+
+        <!-- ================= RETURN BUS ================= -->
+
+        <section id="return-bus" class="page">
+
+            <div class="page-content">
+
+                <h1>El regreso a casa</h1>
+
+                <p>
+                    Habrá transporte de regreso en distintos horarios. Elige el que prefiera cada persona o indícanos si no lo necesita. Si alguien necesita salir antes, tendremos carros particulares que podrán llevarlo de vuelta. Por ahora, los horarios son tentativos; más adelante confirmaremos los definitivos según las preferencias de todos.
+                </p>
+
+                <div id="returnBus-content"></div>
+
+            </div>
+
+        </section>
+
+        <!-- ================= PREFERRED COCKTAIL ================= -->
+
+        <section id="cocktail" class="page">
+
+            <div class="page-content">
+
+                <h1>¿Con qué brindamos?</h1>
+
+                <p>
+                    Nos hace ilusión preparar el bar pensando en ustedes. Cuéntanos cuál de estas bebidas prefiere cada persona.
+                </p>
+
+                <div id="cocktail-content"></div>
+
+            </div>
+
+        </section>
+
+        <!-- ================= REVIEW ================= -->
+
+        <section id="review" class="page">
+
+            <div class="page-content">
+
+                <h1 id="review-title">Un último vistazo</h1>
+
+                <p id="review-description">
+                    Revisa las respuestas de cada persona. Si quieres cambiar algo, puedes volver a los pasos anteriores antes de enviarlas.
+                </p>
+
+                <div id="summary-content"></div>
+
+                <div id="submission-status" class="error-message"></div>
+
+            </div>
+
+        </section>
+
+        <!-- ================= THANK YOU ================= -->
+
+        <section id="thank-you" class="page">
+
+            <div class="page-content">
+
+                <h1 id="thank-you-title">¡Gracias por confirmar!</h1>
+
+                <p id="thank-you-description">
+                    Recibimos tus respuestas. Nos emociona mucho compartir este día contigo.
+                </p>
+
+            </div>
+
+        </section>
+
+        </main>
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer class="footer">
+
+            <button class="secondary-button" disabled>
+
+                ← Volver
+
+            </button>
+
+            <button class="primary-button">
+
+                Continuar →
+
+            </button>
+
+        </footer>
+
     </div>
 
-    <p class="small">
-      A partir del 1 de octubre podrás entrar y confirmar tu asistencia.
-      <br><br>
-      Nos vemos pronto. ♥
-    </p>
-
-  </main>
-
+    <!-- Scripts -->
+    <script src="js/navigation.js"></script>
+    <script src="js/guest-factory.js"></script>
+    <script src="js/question-config.js"></script>
+    <script src="js/invitation.js"></script>
+    <script src="js/sheets-integration.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/forms.js"></script>
+    <script src="js/app.js"></script>
 </body>
-</html>
 
+</html>
